@@ -1,0 +1,70 @@
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/etl.log"
+
+output:
+  format: "parquet"  # Options: csv, parquet, database
+  path: "output/"
+  database:
+    connection_string: "${DATABASE_URL}"
+    table_name: "processed_data"
+
+data_sources:
+  csv_files:
+    type: "csv"
+    enabled: true
+    config:
+      paths:
+        - "data/input/*.csv"
+      encoding: "utf-8"
+      delimiter: ","
+  
+  sql_database:
+    type: "sql"
+    enabled: false
+    config:
+      connection_string: "${SQL_CONNECTION_STRING}"
+      query: "SELECT * FROM source_table"
+      
+  pdf_documents:
+    type: "pdf"
+    enabled: true
+    config:
+      paths:
+        - "data/documents/*.pdf"
+      
+  docx_documents:
+    type: "docx"
+    enabled: true
+    config:
+      paths:
+        - "data/documents/*.docx"
+        
+  sharepoint:
+    type: "sharepoint"
+    enabled: false
+    config:
+      site_url: "${SHAREPOINT_SITE_URL}"
+      username: "${SHAREPOINT_USERNAME}"
+      password: "${SHAREPOINT_PASSWORD}"
+      folder_path: "/Shared Documents"
+      file_patterns:
+        - "*.pdf"
+        - "*.docx"
+        - "*.xlsx"
+
+data_cleaning:
+  remove_duplicates: true
+  handle_missing_values: "drop"  # Options: drop, fill, interpolate
+  fill_value: null
+  text_cleaning:
+    remove_special_chars: true
+    lowercase: true
+    remove_extra_whitespace: true
+
+schema_validation:
+  enabled: true
+  strict_mode: false
+  required_columns: []
+  column_types: {}
