@@ -4,3 +4,4 @@ id,name,email,age,department,salary
 3,Bob Johnson,bob.johnson@company.com,35,Sales,70000
 4,Alice Brown,alice.brown@company.com,32,Engineering,80000
 5,Charlie Wilson,charlie.wilson@company.com,29,HR,60000
+6,,charlie.wilson@company.com,EE,HR,60000

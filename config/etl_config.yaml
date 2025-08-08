@@ -16,7 +16,7 @@ data_sources:
     enabled: true
     config:
       paths:
-        - "data/input/*.csv"
+        - "examples/sample_data.csv"
       encoding: "utf-8"
       delimiter: ","
   
