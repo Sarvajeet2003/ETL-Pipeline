@@ -1,0 +1,23 @@
+etl:
+  input:
+    source_path: "data/raw"
+    file_pattern: "*.csv"
+  
+  output:
+    processed_path: "data/processed"
+    output_filename: "cleaned_data.csv"
+  
+  validation:
+    required_columns: []  # Will be set based on dataset
+    max_missing_percentage: 0.3
+    min_rows: 10
+  
+  cleaning:
+    drop_duplicates: true
+    handle_missing: "drop"  # Options: drop, fill_mean, fill_median, fill_mode
+    outlier_method: "iqr"   # Options: iqr, zscore, none
+    outlier_threshold: 1.5
+  
+  logging:
+    level: "INFO"
+    log_file: "logs/etl.log"

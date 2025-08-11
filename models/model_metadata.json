@@ -1,0 +1,94 @@
+{
+  "best_model_name": "random_forest",
+  "models_trained": [
+    "logistic_regression",
+    "random_forest",
+    "xgboost"
+  ],
+  "config_used": {
+    "data": {
+      "input_path": "data/processed/cleaned_data.csv",
+      "target_column": "target",
+      "test_size": 0.2,
+      "validation_size": 0.2,
+      "random_state": 42
+    },
+    "models": {
+      "logistic_regression": {
+        "enabled": true,
+        "params": {
+          "C": [
+            0.1,
+            1.0,
+            10.0
+          ],
+          "max_iter": [
+            1000
+          ],
+          "solver": [
+            "liblinear",
+            "lbfgs"
+          ]
+        }
+      },
+      "random_forest": {
+        "enabled": true,
+        "params": {
+          "n_estimators": [
+            100,
+            200
+          ],
+          "max_depth": [
+            10,
+            20,
+            null
+          ],
+          "min_samples_split": [
+            2,
+            5
+          ],
+          "random_state": [
+            42
+          ]
+        }
+      },
+      "xgboost": {
+        "enabled": true,
+        "params": {
+          "n_estimators": [
+            100,
+            200
+          ],
+          "max_depth": [
+            3,
+            6
+          ],
+          "learning_rate": [
+            0.01,
+            0.1
+          ],
+          "random_state": [
+            42
+          ]
+        }
+      }
+    },
+    "feature_engineering": {
+      "scaling": "standard",
+      "encoding": "onehot"
+    },
+    "model_selection": {
+      "cv_folds": 5,
+      "scoring": "accuracy",
+      "n_jobs": -1
+    },
+    "output": {
+      "model_path": "models",
+      "metrics_path": "logs/ml_metrics.json"
+    },
+    "logging": {
+      "level": "INFO",
+      "log_file": "logs/ml.log"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+api:
+  server:
+    host: "0.0.0.0"
+    port: 8000
+    debug: false
+  
+  security:
+    secret_key: "your-secret-key-change-in-production"
+    algorithm: "HS256"
+    access_token_expire_minutes: 30
+    api_keys:
+      - "demo-api-key-123"
+      - "production-api-key-456"
+  
+  models:
+    model_path: "models"
+    default_model: "best_model.joblib"
+    auto_reload: true
+  
+  logging:
+    level: "INFO"
+    log_file: "logs/api.log"
+  
+  cors:
+    allow_origins: ["*"]
+    allow_credentials: true
+    allow_methods: ["*"]
+    allow_headers: ["*"]

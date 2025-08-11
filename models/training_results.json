@@ -1,0 +1,58 @@
+{
+  "logistic_regression": {
+    "model_name": "logistic_regression",
+    "best_params": {
+      "C": 0.1,
+      "max_iter": 1000,
+      "solver": "liblinear"
+    },
+    "cv_score": 0.658544474393531,
+    "validation_metrics": {
+      "accuracy": 0.6590909090909091,
+      "precision": 0.6577064444988974,
+      "recall": 0.6590909090909091,
+      "f1": 0.6583135174684469,
+      "roc_auc": 0.7112713675213675
+    },
+    "training_samples": 527,
+    "validation_samples": 176
+  },
+  "random_forest": {
+    "model_name": "random_forest",
+    "best_params": {
+      "max_depth": 20,
+      "min_samples_split": 5,
+      "n_estimators": 100,
+      "random_state": 42
+    },
+    "cv_score": 0.662282120395328,
+    "validation_metrics": {
+      "accuracy": 0.6818181818181818,
+      "precision": 0.6785123966942148,
+      "recall": 0.6818181818181818,
+      "f1": 0.6793616785490008,
+      "roc_auc": 0.6981837606837608
+    },
+    "training_samples": 527,
+    "validation_samples": 176
+  },
+  "xgboost": {
+    "model_name": "xgboost",
+    "best_params": {
+      "learning_rate": 0.01,
+      "max_depth": 3,
+      "n_estimators": 200,
+      "random_state": 42
+    },
+    "cv_score": 0.6489667565139263,
+    "validation_metrics": {
+      "accuracy": 0.6704545454545454,
+      "precision": 0.6648902821316615,
+      "recall": 0.6704545454545454,
+      "f1": 0.6644628099173553,
+      "roc_auc": 0.7152110042735043
+    },
+    "training_samples": 527,
+    "validation_samples": 176
+  }
+}
